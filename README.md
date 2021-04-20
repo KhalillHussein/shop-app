@@ -2,7 +2,7 @@
 <h3 align="center">Simple Mobile App with Firebase services</h3>
 
 
-### About the project
+### Preview
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/KhalillHussein/shop-app/main/preview/login.png" width="256" hspace="4">
