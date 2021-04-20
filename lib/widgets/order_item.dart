@@ -21,7 +21,8 @@ class _OrderItemState extends State<OrderItem> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 200),
-      height: _expanded ? min(widget.order.products.length * 20.0 + 110, 200):95,
+      height:
+          _expanded ? min(widget.order.products.length * 20.0 + 110, 200) : 95,
       curve: Curves.fastLinearToSlowEaseIn,
       child: Card(
         margin: EdgeInsets.all(10),
@@ -41,29 +42,42 @@ class _OrderItemState extends State<OrderItem> {
                 },
               ),
             ),
-              AnimatedContainer(
-                duration: Duration(milliseconds: 200),
-                padding: EdgeInsets.symmetric(vertical: 4,horizontal: 15),
-                height: _expanded ? min(widget.order.products.length * 20.0 + 10, 180):0,
-                curve: Curves.fastLinearToSlowEaseIn,
-                child: ListView(
-                  children: widget.order.products
-                      .map(
-                        (prod) => Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
+            AnimatedContainer(
+              duration: Duration(milliseconds: 200),
+              padding: EdgeInsets.symmetric(vertical: 4, horizontal: 15),
+              height: _expanded
+                  ? min(widget.order.products.length * 20.0 + 10, 180)
+                  : 0,
+              curve: Curves.fastLinearToSlowEaseIn,
+              child: ListView(
+                children: widget.order.products
+                    .map(
+                      (prod) => Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
                               prod.title,
+                              softWrap: true,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                  fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            Text('${prod.quantity}x \$${prod.price}',style: TextStyle(fontSize: 18,color: Colors.grey),),
-                          ],
-                        ),
-                      )
-                      .toList(),
-                ),
+                          ),
+                          Text(
+                            '${prod.quantity}x \$${prod.price}',
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
+                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    )
+                    .toList(),
               ),
+            ),
           ],
         ),
       ),
